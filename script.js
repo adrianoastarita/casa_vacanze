@@ -1,3 +1,47 @@
+const allImages = [
+  '/assets/booking/icon_left.png',
+  '/assets/booking/icon_right.png',
+  
+  '/assets/gallery/pic_gallery_1.jpeg',
+  '/assets/gallery/pic_gallery_2.jpeg',
+  '/assets/gallery/pic_gallery_3.jpeg',
+  '/assets/gallery/pic_gallery_4.jpeg',
+  '/assets/gallery/pic_gallery_5.jpeg',
+  '/assets/gallery/pic_gallery_6.jpeg',
+
+  '/assets/header/icon_ics.png',
+  '/assets/header/icon_left.png',
+  '/assets/header/icon_menu.png',
+  '/assets/header/icon_right.png',
+
+  '/assets/intro/pic_intro_1.jpeg',
+  '/assets/intro/pic_intro_2.jpeg',
+  '/assets/intro/pic_intro_3.jpeg',
+
+  '/assets/location/pic_location_1.jpeg',
+
+  '/assets/reviews/icon_user.png',
+
+  '/assets/services/icon_services_1.png',
+  '/assets/services/icon_services_2.png',
+  '/assets/services/icon_services_3.png',
+  '/assets/services/icon_services_4.png',
+
+];
+
+function preloadImages(imagePaths) {
+  return Promise.all(
+    imagePaths.map((src) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    })
+  );
+}
+
 // Funzione per gestire il menu
 function initializeMenu() {
   const menuToggle = document.getElementById("menu-toggle");
@@ -44,13 +88,16 @@ fetch(`sections/header.html`)
   })
   .catch(err => console.error(`Errore nel caricamento di "header.html" ":`, err));
 
-// Il resto del codice rimane invariato
+
 
 
 const contentContainer = document.getElementById("content-container");
 
-// Carica la sezione "intro" dinamicamente
-fetch(`sections/intro.html`)
+preloadImages(allImages)
+  .then(() => {
+    // Una volta caricate tutte le immagini, inizia il caricamento delle sezioni
+    return fetch(`sections/intro.html`);
+  })
   .then(res => res.text())
   .then(html => {
     const div = document.createElement("div");
@@ -62,45 +109,44 @@ fetch(`sections/intro.html`)
 
     setupArrowListeners();
 
-    loadBackgroundImage()
-      .then(() => fetch(`sections/gallery.html`))
-      .then(res => res.text())
-      .then(html => {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        contentContainer.appendChild(div);
-        return fetch(`sections/location.html`);
-      })
-      .then(res => res.text())
-      .then(html => {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        contentContainer.appendChild(div);
-        return fetch(`sections/services.html`);
-      })
-      .then(res => res.text())
-      .then(html => {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        contentContainer.appendChild(div);
-        return fetch(`sections/booking.html`);
-      })
-      .then(res => res.text())
-      .then(html => {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        contentContainer.appendChild(div);
-        initCalendar(); // Inizializza il calendario dopo che la sezione è stata aggiunta
-        return fetch(`sections/reviews.html`);
-      })
-      .then(res => res.text())
-      .then(html => {
-        const div = document.createElement("div");
-        div.innerHTML = html;
-        contentContainer.appendChild(div);
-      });
+    return fetch(`sections/gallery.html`);
   })
-  .catch(err => console.error(`Errore nel caricamento di "intro.html" ":`, err));
+  .then(res => res.text())
+  .then(html => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    contentContainer.appendChild(div);
+    return fetch(`sections/location.html`);
+  })
+  .then(res => res.text())
+  .then(html => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    contentContainer.appendChild(div);
+    return fetch(`sections/services.html`);
+  })
+  .then(res => res.text())
+  .then(html => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    contentContainer.appendChild(div);
+    return fetch(`sections/booking.html`);
+  })
+  .then(res => res.text())
+  .then(html => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    contentContainer.appendChild(div);
+    initCalendar(); // Inizializza il calendario dopo che la sezione è stata aggiunta
+    return fetch(`sections/reviews.html`);
+  })
+  .then(res => res.text())
+  .then(html => {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    contentContainer.appendChild(div);
+  })
+  .catch(err => console.error("Errore nel caricamento delle sezioni o immagini:", err));
 
 // Imposta altezza della sezione intro
 function setIntroHeight() {
