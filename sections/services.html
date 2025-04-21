@@ -1,0 +1,104 @@
+<section class="section" id="services">
+  <h2 class="section-title">I servizi</h2>
+  <div class="services-container">
+    <div class="service-card">
+      <img src="assets/services/icon_services_1.png" alt="Service 1">
+      <p class="text-box">Parcheggio privato interno</br>(non incluso nel prezzo della prenotazione)</p>
+    </div>
+    <div class="service-card">
+      <img src="assets/services/icon_services_2.png" alt="Service 2">
+      <p class="text-box">Cucina attrezzata</p>
+    </div>
+    <div class="service-card">
+      <img src="assets/services/icon_services_3.png" alt="Service 3">
+      <p class="text-box">Spiaggia a 50mt</p>
+    </div>
+    <div class="service-card">
+      <img src="assets/services/icon_services_4.png" alt="Service 4">
+      <p class="text-box">Sconti e promozioni in locali selezionati</p>
+    </div>
+  </div>
+</section>
+
+
+<style>
+
+    .services-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+    }
+
+    .service-card img {
+      height: 60px;
+      width: 60px;
+      object-fit: contain;
+      margin-right: 1rem;
+    }
+
+    .service-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+      font-family: 'Georgia', serif;
+    }
+
+    /* Nascondi scrollbar orizzontale */
+    .services-container::-webkit-scrollbar {
+      display: none;
+    }
+    .services-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media (max-width: 768px) {
+      .service-card {
+        min-width: 220px;
+        padding: 0.8rem;
+      }
+
+      .service-card img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .service-card p {
+        font-size: 0.9rem;
+      }
+    }
+    
+    .text-box {
+      text-align: center;            /* Centra il testo */
+      padding: 1rem;                 /* Padding interno */
+      font-family: 'Georgia', serif; /* Cambia font */
+      font-size: 1.1rem;             /* Font un po' più grande (opzionale) */
+      color: #333;                   /* Colore scuro leggibile */
+      line-height: 1.5;              /* Spaziatura verticale */
+    }
+
+</style>
+
+

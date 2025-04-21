@@ -1,0 +1,123 @@
+<section class="section" id="reviews">
+  <h2 class="section-title">Dicono di noi</h2>
+  <div class="reviews-container">
+    
+    <div class="review-card">
+      <div class="review-top">
+        <div class="user-img">
+          <img src="assets/reviews/icon_user.png" alt="Utente 1">
+        </div>
+        <div class="user-info">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="user-name">Giulia R.</div>
+        </div>
+      </div>
+      <div class="review-text">
+        <p>Posto incantevole a due passi dal mare! Pulizia impeccabile e host super disponibile. Torneremo sicuramente.</p>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <div class="user-img">
+          <img src="assets/reviews/icon_user.png" alt="Utente 2">
+        </div>
+        <div class="user-info">
+          <div class="stars">⭐⭐⭐⭐</div>
+          <div class="user-name">Marco L.</div>
+        </div>
+      </div>
+      <div class="review-text">
+        <p>Zona tranquilla e appartamento ben attrezzato. Unica pecca: parcheggio un po’ stretto.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+
+  .review-card {
+    width: 90%;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+
+  .review-card:hover {
+    transform: scale(1.02);
+  }
+
+  .review-top {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .user-img img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stars {
+    font-size: 1rem;
+    color: #FFD700;
+    margin-bottom: 0.25rem;
+  }
+
+  .user-name {
+    font-family: 'Georgia', serif;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .review-text p {
+    font-family: 'Georgia', serif;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .review-card {
+      padding: 0.8rem;
+    }
+
+    .user-img img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .stars {
+      font-size: 0.9rem;
+    }
+
+    .user-name {
+      font-size: 0.95rem;
+    }
+
+    .review-text p {
+      font-size: 0.95rem;
+    }
+  }
+</style>
+

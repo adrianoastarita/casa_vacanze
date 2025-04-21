@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Casa Vacanze</title>
+  
+  <style>
+    /* Layout di base con Flexbox */
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;  /* Occupa tutta l'altezza della finestra */
+      margin: 0;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+      background-color: #fdfdfd;
+    }
+
+    .section-title {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+      
+    /* Placeholder per l'header */
+    #header-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+      
+    /* Placeholder per la gallery */
+    #gallery-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+      
+    /* Placeholder per la location */
+    #location-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    /* Contenitore del contenuto */
+    #content-container {
+      flex-grow: 1;   /* Consente al contenuto di occupare il resto dello spazio */
+      overflow-y: auto; /* Permette lo scroll delle sezioni */
+      padding: 0px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+      
+    #app {
+      flex-grow: 1;
+      padding-top: 0px;
+    }
+      
+      /* Stile per il menu overlay */
+      .menu-overlay {
+        display: none; /* Di default il menu è nascosto */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7); /* Sfondo scuro con trasparenza */
+        z-index: 1001; /* Deve essere sopra il contenuto della pagina */
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        backdrop-filter: blur(10px); /* Sfocatura dello sfondo */
+      }
+
+      .menu-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-menu a {
+        font-family: sans-serif;
+        text-decoration: none;
+        color: #333;
+        padding: 1rem 0;
+        font-size: 1.5rem;
+        transition: color 0.2s;
+      }
+
+      .nav-menu a:hover {
+        color: #0077cc;
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: none;
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+      }
+
+      .close-menu:hover {
+        color: red;
+      }
+
+      
+  </style>
+</head>
+<body>
+
+  <!-- Modal/Overlay -->
+  <div id="menu-overlay" class="menu-overlay">
+    <div class="menu-content">
+      <button id="close-menu" class="close-menu">X</button>
+      <nav class="nav-menu">
+        <a href="#gallery-container">Gli spazi</a>
+        <a href="#location-container">La posizione</a>
+        <a href="#services-container">Servizi</a>
+        <a href="#booking-container">Disponibilità</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Header fisso -->
+  <div id="header-container"></div>
+  
+  <!-- Contenitore principale per il contenuto delle sezioni -->
+  <div id="content-container">
+    <!-- Le sezioni verranno caricate dinamicamente qui -->
+    <main id="app"></main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

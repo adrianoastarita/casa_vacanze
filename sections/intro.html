@@ -1,0 +1,85 @@
+<section class="intro">
+  <div class="intro-overlay">
+    <h1>Benvenuti</h1>
+  </div>
+
+  <!-- Frecce per navigare tra le immagini -->
+  <div class="arrow left" id="prev-arrow">
+    <img src="assets/header/icon_left.png" alt="Freccia sinistra" />
+  </div>
+  <div class="arrow right" id="next-arrow">
+    <img src="assets/header/icon_right.png" alt="Freccia destra" />
+  </div>
+</section>
+
+<style>
+  /* Sezione Intro */
+  .intro {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image:
+      linear-gradient(to bottom, rgba(0,0,0,0) 60%, #fdfdfd 100%),
+      url('/assets/intro/pic_intro_1.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /*transition: background-image 0.5s ease-in-out; */
+  }
+
+
+  /* Overlay con titolo */
+  .intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 60%, rgba(255, 255, 255, 0.8) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .intro h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+
+  /* Frecce ai lati, ma abbassate */
+  .arrow {
+    position: absolute;
+    bottom: 40px; /* Distanza dal bordo inferiore */
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .arrow.left {
+    left: 30px;
+  }
+
+  .arrow.right {
+    right: 30px;
+  }
+
+  .arrow img {
+    width: 50px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .arrow img:hover {
+    transform: scale(1.1);
+    filter: brightness(0) invert(1);
+  }
+
+</style>
