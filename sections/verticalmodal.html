@@ -1,0 +1,58 @@
+<div id="verticalModal" class="modal-vertical">
+  <div class="vertical-close">
+    <img src="/assets/modal/icon_ics.png" alt="Chiudi">
+  </div>
+  <div class="vertical-scroll">
+    <!-- Le immagini verranno inserite dinamicamente -->
+  </div>
+</div>
+
+<style>
+
+  .modal-vertical {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px 0;
+    box-sizing: border-box;
+  }
+
+  .modal-vertical.show {
+    display: block;
+  }
+
+  .vertical-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .vertical-scroll img {
+    max-width: 90%;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .vertical-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1003;
+    cursor: pointer;
+  }
+
+  .vertical-close img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+  }
+
+</style>
+
