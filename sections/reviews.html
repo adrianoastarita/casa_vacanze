@@ -4,12 +4,9 @@
     
     <div class="review-card">
       <div class="review-top">
-        <div class="user-img">
-          <img src="assets/reviews/icon_user.png" alt="Utente 1">
-        </div>
         <div class="user-info">
+          <div class="user-name">Giulia</div>
           <div class="stars">⭐⭐⭐⭐⭐</div>
-          <div class="user-name">Giulia R.</div>
         </div>
       </div>
       <div class="review-text">
@@ -19,12 +16,9 @@
 
     <div class="review-card">
       <div class="review-top">
-        <div class="user-img">
-          <img src="assets/reviews/icon_user.png" alt="Utente 2">
-        </div>
         <div class="user-info">
+          <div class="user-name">Marco</div>
           <div class="stars">⭐⭐⭐⭐</div>
-          <div class="user-name">Marco L.</div>
         </div>
       </div>
       <div class="review-text">
@@ -39,17 +33,17 @@
   .reviews-container {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
     padding-bottom: 1rem;
   }
 
   .review-card {
-    width: 90%;
+    max-width: 100%;
     background: white;
     border-radius: 12px;
-    padding: 1rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 0.8rem;
     transition: transform 0.3s ease;
   }
 
@@ -61,14 +55,6 @@
     display: flex;
     gap: 1rem;
     margin-bottom: 0.5rem;
-  }
-
-  .user-img img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ccc;
   }
 
   .user-info {
@@ -84,7 +70,7 @@
   }
 
   .user-name {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #333;
   }
 
@@ -95,27 +81,5 @@
     margin: 0;
   }
 
-  @media (max-width: 768px) {
-    .review-card {
-      padding: 0.8rem;
-    }
-
-    .user-img img {
-      width: 50px;
-      height: 50px;
-    }
-
-    .stars {
-      font-size: 0.9rem;
-    }
-
-    .user-name {
-      font-size: 0.95rem;
-    }
-
-    .review-text p {
-      font-size: 0.95rem;
-    }
-  }
 </style>
 

@@ -1,15 +1,18 @@
 <section class="intro">
+  <video autoplay muted loop playsinline class="intro-video">
+    <source src="/assets/intro/video_intro.mp4" type="video/mp4">
+    Il tuo browser non supporta i video HTML5.
+  </video>
   <div class="intro-overlay">
     <h1>Benvenuti</h1>
   </div>
-
-  <!-- Frecce per navigare tra le immagini -->
-  <div class="arrow left" id="prev-arrow">
-    <img src="assets/header/icon_left.png" alt="Freccia sinistra" />
+  
+  <div class="mask">
+    <p class="line1">Inaugurazione 20 giugno</p>
+    <p class="line2">●</p>
+    <p class="line3">20% di sconto sulle prime 10 prenotazioni</p>
   </div>
-  <div class="arrow right" id="next-arrow">
-    <img src="assets/header/icon_right.png" alt="Freccia destra" />
-  </div>
+  
 </section>
 
 <style>
@@ -18,9 +21,6 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image:
-      linear-gradient(to bottom, rgba(0,0,0,0) 60%, #fdfdfd 100%),
-      url('/assets/intro/pic_intro_1.jpeg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -28,21 +28,28 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /*transition: background-image 0.5s ease-in-out; */
+    opacity: 1;
   }
 
-
-  /* Overlay con titolo */
-  .intro-overlay {
+  .intro-video {
     position: absolute;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 60%, rgba(255, 255, 255, 0.8) 100%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  /* Overlay con titolo */
+  .intro-overlay {
+    position: relative;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .intro h1 {
@@ -52,33 +59,34 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     margin: 0;
   }
-
-  /* Frecce ai lati, ma abbassate */
-  .arrow {
+    
+  .mask {
     position: absolute;
-    bottom: 40px; /* Distanza dal bordo inferiore */
-    cursor: pointer;
-    z-index: 10;
+    bottom: 2rem;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
   }
 
-  .arrow.left {
-    left: 30px;
+  .mask p {
+    color: darkorange; /* oro scuro */
+    margin: 0;
   }
 
-  .arrow.right {
-    right: 30px;
+  .line1,
+  .line3 {
+    font-size: 1.6rem;
+    font-weight: 700; /* grassetto */
   }
 
-  .arrow img {
-    width: 50px;
-    height: auto;
-    filter: brightness(0) invert(1);
-    transition: transform 0.2s ease, filter 0.2s ease;
-  }
-
-  .arrow img:hover {
-    transform: scale(1.1);
-    filter: brightness(0) invert(1);
+  .line2 {
+    font-size: 1.2rem;
   }
 
 </style>
+
