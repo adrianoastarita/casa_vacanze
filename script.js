@@ -165,14 +165,17 @@ preloadImages(allImages)
   .then(res => res.text())
   .then(html => {
     appendHTMLToContainer(html);
-    initializeVerticalModal(); // 👈 Chiamata spostata qui
+    initializeGalleryModal();
   })
   .then(() => fetch(`sections/location.html`))
   .then(res => res.text())
   .then(appendHTMLToContainer)
   .then(() => fetch(`sections/services.html`))
   .then(res => res.text())
-  .then(appendHTMLToContainer)
+  .then(html => {
+    appendHTMLToContainer(html);
+    initServicesModal();
+  })
   .then(() => fetch(`sections/booking.html`))
   .then(res => res.text())
   .then(html => {
@@ -225,7 +228,7 @@ function initCalendar() {
   renderCalendar(currentDate);
 }
 
-fetch('sections/verticalmodal.html')
+fetch('sections/gallerymodal.html')
   .then(response => response.text())
   .then(html => {
     const placeholder = document.getElementById('modal-placeholder');
@@ -237,34 +240,67 @@ fetch('sections/verticalmodal.html')
   })
   .catch(err => console.error("Errore nel caricamento di modal.html:", err));
 
-function initializeVerticalModal() {
-  const verticalModal = document.getElementById('verticalModal');
-  const verticalScroll = verticalModal.querySelector('.vertical-scroll');
-  const closeBtn = verticalModal.querySelector('.vertical-close');
-  const images = document.querySelectorAll('.clickable-image');
-  if (!verticalModal || !verticalScroll || !images.length) return;
+function initializeGalleryModal() {
+  const galleryModal = document.getElementById('galleryModal');
+  const galleryModalItemsContainer = galleryModal.querySelector('.gallery-modal-items-container');
+  const closeBtn = galleryModal.querySelector('.gallery-modal-close');
+  const images = document.querySelectorAll('.gallery-clickable-image');
+  if (!galleryModal || !galleryModalItemsContainer || !images.length) return;
   images.forEach((img, index) => {
     img.addEventListener('click', () => {
-      openVerticalModal(index);
+      openGalleryModal(index);
     });
   });
-  function openVerticalModal(clickedIndex) {
-    verticalScroll.innerHTML = '';
+  function openGalleryModal(clickedIndex) {
+    galleryModalItemsContainer.innerHTML = '';
     images.forEach((img, i) => {
       const clone = img.cloneNode();
       if (i === clickedIndex) clone.classList.add('active');
-      verticalScroll.appendChild(clone);
+      galleryModalItemsContainer.appendChild(clone);
     });
-    verticalModal.classList.add('show');
+    galleryModal.classList.add('show');
     setTimeout(() => {
-      const activeImg = verticalScroll.querySelector('.active');
+      const activeImg = galleryModalItemsContainer.querySelector('.active');
       if (activeImg) {
         activeImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 100);
   }
   closeBtn.addEventListener('click', () => {
-    verticalModal.classList.remove('show');
+    galleryModal.classList.remove('show');
   });
 }
 
+function initServicesModal() {
+  const modal = document.getElementById("servicesModal");
+  const closeBtn = modal?.querySelector(".services-modal-close");
+  const thumbnails = document.querySelectorAll(".services-container img");
+  const detailImages = document.querySelectorAll(".services-modal-items-container img");
+
+  if (!modal || thumbnails.length === 0) return;
+
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener("click", () => {
+      modal.classList.add("show");
+      const targetImage = detailImages[index];
+      if (targetImage) {
+        const container = document.querySelector(".services-modal-items-container");
+        const containerWidth = container.offsetWidth;
+        const imageLeft = targetImage.offsetLeft;
+        const imageWidth = targetImage.offsetWidth;
+        const scrollTo = imageLeft - (containerWidth / 2) + (imageWidth / 2);
+        container.scrollTo({ left: scrollTo, behavior: "smooth" });
+      }
+    });
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal.classList.remove("show");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("show");
+    }
+  });
+}

@@ -1,3 +1,5 @@
+<!--
+
 <section class="section" id="services">
   <h2 class="section-title">I servizi</h2>
   <div class="services-container">
@@ -26,3 +28,104 @@
   }
 </style>
 
+-->
+
+<section class="section" id="services">
+  <h2 class="section-title">I servizi</h2>
+  <div class="services-container">
+    <img src="assets/services/icon_services_1.png" data-index="0" alt="Servizio 1">
+    <img src="assets/services/icon_services_2.png" data-index="1" alt="Servizio 2">
+    <img src="assets/services/icon_services_3.png" data-index="2" alt="Servizio 3">
+    <img src="assets/services/icon_services_4.png" data-index="3" alt="Servizio 4">
+  </div>
+</section>
+
+<!-- Modal inline -->
+<div id="servicesModal" class="services-modal">
+  <div class="services-modal-close">
+    <img src="/assets/modal/icon_ics.png" alt="Chiudi">
+  </div>
+  <div class="services-modal-items-container">
+    <img src="assets/services/icon_services_1_detail.png" alt="Service detail 1">
+    <img src="assets/services/icon_services_2_detail.png" alt="Service detail 2">
+    <img src="assets/services/icon_services_3_detail.png" alt="Service detail 3">
+    <img src="assets/services/icon_services_4_detail.png" alt="Service detail 4">
+  </div>
+</div>
+
+<style>
+
+  /* Servizi - Vista principale */
+  .services-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+    
+  .services-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  /* Modal */
+  .services-modal {
+    display: none;
+    position: fixed;
+    z-index: 1002;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px 0;
+    box-sizing: border-box;
+  }
+
+  .services-modal.show {
+    display: block;
+  }
+
+  .services-modal-close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 1003;
+    cursor: pointer;
+  }
+
+  .services-modal-close img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+  }
+
+  .services-modal-items-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    overflow-x: auto;
+    height: calc(100vh - 80px);
+    margin-top: 10%;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 20px;
+  }
+
+  .services-modal-items-container img {
+    max-width: 300px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+
+  .services-modal-items-container img:hover {
+    transform: scale(1.05);
+  }
+</style>
