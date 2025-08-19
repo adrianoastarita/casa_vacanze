@@ -27,17 +27,17 @@
   <div class="booking-link">
 
     <div class="reservation-link">
-      <img src="assets/booking/icon-reservation.png" alt="Reservation" class="ota-icon">
-      <span>Prenota da questo sito</span>
+      <img src="assets/booking/icon-reservation.png" alt="Reservation" class="reservation-icon">
+      <span class="reservation-text">Prenota da questo sito</span>
     </div>
       
     <a href="http://www.airbnb.it/h/lamaisonalamer-gaeta" target="_blank" rel="noopener noreferrer" class="ota-link">
       <img src="assets/booking/icon-airbnb.png" alt="Airbnb" class="ota-icon">
-      <span>Prenota su Airbnb...</span>
+      <span class="ota-text">Prenota su Airbnb...</span>
     </a>
     <div class="ota-link">
       <img src="assets/booking/icon-booking.png" alt="Booking" class="ota-icon">
-      <span>Prenota su Booking...</span>
+      <span class="ota-text">Prenota su Booking...</span>
     </div>
   </div>
   
@@ -124,7 +124,7 @@
     padding: 0.7rem 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    background: lightgrey;
+    background: black;
     transition: background-color 0.3s ease;
     cursor: pointer;
     text-decoration: none;
@@ -163,6 +163,20 @@
     object-fit: contain;
   }
 
+  .reservation-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: invert(1);
+  }
 
-    
+.reservation-text {
+  color: white;
+  font-size: 18px;
+}
+
+.ota-text {
+  color: black;
+  font-size: 18px;
+}
 </style>
