@@ -26,7 +26,8 @@
   
   <div class="booking-link">
 
-    <div class="ota-link">
+    <div class="reservation-link">
+      <img src="assets/booking/icon-reservation.png" alt="Reservation" class="ota-icon">
       <span>Prenota da questo sito</span>
     </div>
       
@@ -115,6 +116,22 @@
     gap: 1rem;    
   }
 
+  .reservation-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: lightgrey;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+    
   .ota-link {
     display: flex;
     align-items: center;
